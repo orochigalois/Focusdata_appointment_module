@@ -346,17 +346,21 @@ var User = function () {
     //============================================================
 
     this.logout = function () {
-        $.ajax({
-            'url': '/accounts/logout/',
-            'type': 'GET',
-            'success': function () {
-                self.isAuthenticated(false);
-                GlobalMessages.clear().success('You have successfully logged out.');
-            },
-            'error': function () {
-                GlobalMessages.clear().failure('There was a problem logging you out, please try again.');
-            }
-        });
+    	
+    	self.isAuthenticated(false);
+        GlobalMessages.clear().success('You have successfully logged out.');
+        
+//        $.ajax({
+//            'url': 'accounts/logout/',
+//            'type': 'GET',
+//            'success': function () {
+//                self.isAuthenticated(false);
+//                GlobalMessages.clear().success('You have successfully logged out.');
+//            },
+//            'error': function () {
+//                GlobalMessages.clear().failure('There was a problem logging you out, please try again.');
+//            }
+//        });
     };
 
     this.cancelBooking = function () {
@@ -560,16 +564,25 @@ User.prototype.login = function () {
     }
 
     $.ajax({
-        url: 'accounts/login/',
+        url: 'classes/class.sign_in.php',
         type: 'POST',
+        dataType: "json",
         data: {
             username: this.email(),
             password: $('#password').val()
         },
-        success: function (response) {
-            GlobalMessages.success('You have successfully logged in.');
-            this.loginSuccessHandler(response);
-            this.fetchPatients();
+        success: function (success) {
+        	
+        	if(success){
+        		GlobalMessages.success('You have successfully logged in.');
+                this.loginSuccessHandler();
+                this.fetchPatients();
+        	}
+        	else
+        		this.loginFailureHandler();
+        		
+                
+            
         }.bind(this),
         error: this.loginFailureHandler.bind(this)
     });
@@ -636,22 +649,22 @@ User.prototype.fetchDetails = function () {
         });
 };
 
-User.prototype.loginSuccessHandler = function (response) {
-    _(response).each(function(value, key) {
-        try{
-            this[key](value);
-        } catch (x) {}
-    }, this); // TODO: do I need to .bind(this) here?
+User.prototype.loginSuccessHandler = function () {
+//    _(response).each(function(value, key) {
+//        try{
+//            this[key](value);
+//        } catch (x) {}
+//    }, this); // TODO: do I need to .bind(this) here?
     this.isAuthenticated(true);
     $('#loginregister').modal('hide');
 };
 
-User.prototype.loginFailureHandler = function (xhr) {
+User.prototype.loginFailureHandler = function () {
     var message = 'Login attempt failed. Please try again.';
 
-    if (xhr && xhr.responseJSON && xhr.responseJSON.__all__) {
-        message = xhr.responseJSON.__all__[0];
-    }
+//    if (xhr && xhr.responseJSON && xhr.responseJSON.__all__) {
+//        message = xhr.responseJSON.__all__[0];
+//    }
 
     $('.login-alert').html(message).removeClass('hide');
 };
