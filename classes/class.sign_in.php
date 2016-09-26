@@ -12,7 +12,7 @@ class Sign_in
 		$this->sign_in = new Sign_in_DB();
 
 
-		$this->username = $_POST ['username'];
+		$this->email = $_POST ['username'];
 		$this->password = $_POST ['password'];
 
 		$this->viewAll ();
@@ -28,17 +28,21 @@ class Sign_in
 		$success = true;
 
 
-		$ret= $this->sign_in->viewAll ($this->username,$this->password);
+		$ret= $this->sign_in->viewAll ($this->email,$this->password);
 		
 		$count = $ret[0]["COUNT"];
 
 		if($count == 1){
+			
+			$ID= $this->sign_in->getUserID ($this->email,$this->password);
+			
+			$_SESSION ['UserID'] = $ID[0]["CUSTOMER_USER_ID"];
+			
 			$success = true;
 
-// 			$_SESSION ['fd_user_name'] = $this->arr_values["USER_NAME"];
-// 			$_SESSION ['fd_user_pwd'] = $this->arr_values["USER_PWD"];
 		}elseif($count == 0){
 			$success = false;
+			unset($_SESSION ['UserID']);
 
 		}else{
 			$success = false;

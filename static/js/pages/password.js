@@ -100,15 +100,23 @@ PasswordReset.prototype.forgotPassword = function()
 		this.form.set_errors(result.errors);
 		return;
 	}
+	
+	var reset_pwd=""; 
+    for(var i=0;i<6;i++) 
+    { 
+      reset_pwd+=Math.floor(Math.random()*10); 
+    } 
 
 	$
 			.ajax(
 			{
-				url : 'accounts/forgot/',
+				url : 'classes/PHPMailer/gmail.php',
 				type : 'POST',
 				data :
 				{
-					'email' : result.values.email
+				    email : result.values.email,
+					pwd: reset_pwd,
+					name:'guest'
 				},
 				success : $.proxy(function()
 				{

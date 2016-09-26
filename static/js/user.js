@@ -694,7 +694,7 @@ User.prototype.saveUser = function () {
 
 User.prototype.fetchPatients = function () {
     return $.ajax({
-        url: 'api/v1/patient/',
+        url: 'classes/class.patient_update.php',
         type: 'GET',
     })
         .then(function (response) {
