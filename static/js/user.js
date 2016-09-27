@@ -571,11 +571,11 @@ User.prototype.login = function () {
             username: this.email(),
             password: $('#password').val()
         },
-        success: function (success) {
+        success: function (response) {
         	
-        	if(success){
+        	if(response){
         		GlobalMessages.success('You have successfully logged in.');
-                this.loginSuccessHandler();
+                this.loginSuccessHandler(response);
                 this.fetchPatients();
         	}
         	else
@@ -649,15 +649,17 @@ User.prototype.fetchDetails = function () {
         });
 };
 
-User.prototype.loginSuccessHandler = function () {
-//    _(response).each(function(value, key) {
-//        try{
-//            this[key](value);
-//        } catch (x) {}
-//    }, this); // TODO: do I need to .bind(this) here?
+
+User.prototype.loginSuccessHandler = function (response) {
+    _(response).each(function(value, key) {
+        try{
+            this[key](value);
+        } catch (x) {}
+    }, this);
     this.isAuthenticated(true);
     $('#loginregister').modal('hide');
 };
+
 
 User.prototype.loginFailureHandler = function () {
     var message = 'Login attempt failed. Please try again.';
@@ -679,9 +681,10 @@ User.prototype.saveUser = function () {
     }
 
     return $.ajax({
-        url: 'accounts/update/',
+        url: 'classes/class.account_update.php',
         type: 'POST',
-        data: this.$user_form.find('form').serialize()
+        dataType: "json",
+        data: this.$user_form.find('form').serializeObject()
     })
         .then(function (response) {
             this.loginSuccessHandler(response);

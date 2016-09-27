@@ -26,6 +26,8 @@ class Sign_in
 	{
 		
 		$success = true;
+		
+		$response  = array();
 
 
 		$ret= $this->sign_in->viewAll ($this->email,$this->password);
@@ -37,21 +39,28 @@ class Sign_in
 			$ID= $this->sign_in->getUserID ($this->email,$this->password);
 			
 			$_SESSION ['UserID'] = $ID[0]["CUSTOMER_USER_ID"];
+			$_SESSION ['User'] = $ID[0]["CUSTOMER_USER_NAME"];
 			
+			$response['phone'] = $ID[0]["CUSTOMER_PHONE_NO"];
+			$response['name'] = $ID[0]["CUSTOMER_NAME"];
 			$success = true;
 
 		}elseif($count == 0){
 			$success = false;
 			unset($_SESSION ['UserID']);
+			unset($_SESSION ['User']);
 
 		}else{
 			$success = false;
+			unset($_SESSION ['UserID']);
+			unset($_SESSION ['User']);
 
 		}
 
 
 
-		echo json_encode ( $success );
+		header('Content-Type: application/json');
+		echo json_encode ( $response );
 	}
 
 }

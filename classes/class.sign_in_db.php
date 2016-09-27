@@ -10,7 +10,7 @@ class sign_in_DB{
     }
     
     public function getUserID($email,$password){
-    	$sql = "SELECT CUSTOMER_USER_ID FROM fd_customer_user 
+    	$sql = "SELECT * FROM fd_customer_user 
     			WHERE CUSTOMER_USER_MAIL='".$email."' and CUSTOMER_USER_PWD='".md5($password)."'";
     	$ret = $this->db->fetchAll_sql($sql,null);
     	
