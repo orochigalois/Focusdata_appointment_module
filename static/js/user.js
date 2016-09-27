@@ -694,7 +694,7 @@ User.prototype.saveUser = function () {
 
 User.prototype.fetchPatients = function () {
     return $.ajax({
-        url: 'classes/class.patient_update.php',
+        url: 'classes/class.patient_read.php',
         type: 'GET',
     })
         .then(function (response) {
@@ -716,9 +716,9 @@ User.prototype.savePatient = function () {
 
     var id = form.data('patient');
     $.ajax({
-        url: 'api/v1/patient/' + ((id == '0') ? '' : 'object/' + id + '/'),
+        url: ((id == '0') ? 'classes/class.patient_create.php' : 'classes/class.patient_update.php'),
         type: 'POST',
-        data: form.find('form').serialize(),
+        data: {form: form.find('form').serializeObject(), patientID : id},
         success: function () {
             this.fetchPatients();
             form.modal('hide');

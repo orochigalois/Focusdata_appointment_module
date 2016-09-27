@@ -1,7 +1,7 @@
 <?php 
 include_once('class.database.php');
 
-class patient_update_db{
+class patient_create_db{
     private $db;
     public function __construct(){  
 
@@ -9,12 +9,11 @@ class patient_update_db{
 	
     }
     
+
     
-    public function update($arr_values){
-
-
-    	$where =" id = ".$arr_values['patientID'];
-    	unset($arr_values["patientID"]);
+    
+    public function create($arr_values){
+    	
     	
     	//update dob
     	foreach($arr_values as $k=>$v){
@@ -24,8 +23,8 @@ class patient_update_db{
     		}
     	}
     
-
-    	$ret = $this->db->updateData('ap_patient', $arr_values, $where);
+    
+    	$ret = $this->db->insertData('ap_patient', $arr_values);
     	return $ret;
     }
 

@@ -3,6 +3,7 @@ include_once ('class.patient_update_db.php');
 class patient_update
 {
 	private $patient_update_db;
+	private $arr_values = array();
 
 
 	public function __construct()
@@ -10,32 +11,50 @@ class patient_update
 		session_start ();
 		$this->patient_update_db = new patient_update_db();
 
-
-		$this->ID = $_SESSION ['UserID'];
+		
+		if (isset ( $_POST ['form'] )){
+			$this->arr_values = $_POST ['form'];
+		}
+		
+		if (isset ( $_POST ['patientID'] )){
+			$this->arr_values["patientID"] = $_POST ['patientID'];
+		}
 		
 
-		$this->viewAll ();
+		if (isset ( $_SESSION ['UserID'] ))
+		{
+			$this->arr_values["UPDATE_USER"] = $_SESSION ['UserID'];
+		}
+		else
+		{
+			$this->arr_values["UPDATE_USER"] = "";
+		}
+		$this->arr_values["UPDATE_DATE"] = date("Y-m-d H:i:s",time());
+
+		$this->update ();
 		
 	}
-	
-
-
-
-	public function viewAll()
+	public function update()
 	{
-		$response  = array();
+		$success = true;
+
+		$ret = $this->patient_update_db->update($this->arr_values);
+	
+		if($ret>0){
+			$success = true;
+
+		}else{
+			$success = false;
+
+		}
+		echo $success;
+	}
 	
 
-		$ret= $this->patient_update_db->viewAll ($this->ID);
-		
-
-		$response["meta"] = "";
-		$response["objects"] = $ret;
 
 
-		header('Content-Type: application/json');
-		echo json_encode ( $response);
-	}
+
+	
 
 }
 
