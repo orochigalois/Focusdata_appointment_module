@@ -612,7 +612,14 @@ User.prototype.register = function () {
                 this.fetchPatients();
         	}
         	else{
-        		alert('This mail has been used');
+        		//alert('This mail has been used');
+        		var message = 'This mail has been used';
+
+//        	    if (xhr && xhr.responseJSON && xhr.responseJSON.__all__) {
+//        	        message = xhr.responseJSON.__all__[0];
+//        	    }
+
+        	    $('.register-alert').removeClass('hide').html(message);
         	}
             
         }.bind(this),
