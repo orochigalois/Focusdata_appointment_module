@@ -225,8 +225,11 @@ var ViewModel = function () {
                 self.setCurrentView('appointments');
             }],
             // Account
-            ['get', '#account', function () {
-                if(!self.user.isAuthenticated()) { this.app.setLocation('#booking'); return; }
+            ['get', '#account', function() {
+                if (!self.user.isAuthenticated()) {
+                    this.app.setLocation('#booking');
+                    return;
+                }
                 self.setCurrentView('account');
             }],
             // Login

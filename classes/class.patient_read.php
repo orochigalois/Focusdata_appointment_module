@@ -11,7 +11,7 @@ class patient_read
 		$this->patient_read_db = new patient_read_db();
 
 
-		$this->ID = $_SESSION ['UserID'];
+		$this->ID = $_SESSION ['id'];
 		
 
 		$this->viewAll ();

@@ -27,10 +27,10 @@ class account_update
 		
 		
 
-		if (isset ( $_SESSION ['UserID'] ))
+		if (isset ( $_SESSION ['id'] ))
 		{
-			$this->arr_values["CUSTOMER_USER_ID"] = $_SESSION ['UserID'];
-			$this->arr_values["UPDATE_USER"] = $_SESSION ['User'];
+			$this->arr_values["CUSTOMER_USER_ID"] = $_SESSION ['id'];
+			$this->arr_values["UPDATE_USER"] = $_SESSION ['user'];
 		}
 
 		$this->arr_values["UPDATE_DATE"] = date("Y-m-d H:i:s",time());

@@ -346,21 +346,17 @@ var User = function () {
     //============================================================
 
     this.logout = function () {
-    	
-    	self.isAuthenticated(false);
-        GlobalMessages.clear().success('You have successfully logged out.');
-        
-//        $.ajax({
-//            'url': 'accounts/logout/',
-//            'type': 'GET',
-//            'success': function () {
-//                self.isAuthenticated(false);
-//                GlobalMessages.clear().success('You have successfully logged out.');
-//            },
-//            'error': function () {
-//                GlobalMessages.clear().failure('There was a problem logging you out, please try again.');
-//            }
-//        });
+        $.ajax({
+            'url': 'classes/class.sign_out.php',
+            'type': 'GET',
+            'success': function () {
+                self.isAuthenticated(false);
+                GlobalMessages.clear().success('You have successfully logged out.');
+            },
+            'error': function () {
+                GlobalMessages.clear().failure('There was a problem logging you out, please try again.');
+            }
+        });
     };
 
     this.cancelBooking = function () {
@@ -573,7 +569,7 @@ User.prototype.login = function () {
         },
         success: function (response) {
         	
-        	if(response){
+        	if(response.success){
         		GlobalMessages.success('You have successfully logged in.');
                 this.loginSuccessHandler(response);
                 this.fetchPatients();
@@ -622,15 +618,15 @@ User.prototype.register = function () {
 
 User.prototype.fetchDetails = function () {
     return $.ajax({
-        url: 'accounts/login/',
+        url: 'classes/class.sign_in_yes_or_no.php',
         type: 'GET',
     })
         .then(function (response) {
-            // If we're logged in.
-            this.fetchPatients();
-            this.fetchBookings();
 
-            if (response) {
+
+            if (response.success) {
+            	this.fetchPatients();
+                this.fetchBookings();
                 return $.when([
                     this.loginSuccessHandler(response),
                 ]);
@@ -661,14 +657,15 @@ User.prototype.loginSuccessHandler = function (response) {
 };
 
 
-User.prototype.loginFailureHandler = function () {
+
+User.prototype.loginFailureHandler = function (xhr) {
     var message = 'Login attempt failed. Please try again.';
 
-//    if (xhr && xhr.responseJSON && xhr.responseJSON.__all__) {
-//        message = xhr.responseJSON.__all__[0];
-//    }
+    if (xhr && xhr.responseJSON && xhr.responseJSON.__all__) {
+        message = xhr.responseJSON.__all__[0];
+    }
 
-    $('.login-alert').html(message).removeClass('hide');
+    $('.login-alert').removeClass('hide').html(message);
 };
 
 User.prototype.saveUser = function () {

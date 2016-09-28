@@ -21,9 +21,9 @@ class patient_update
 		}
 		
 
-		if (isset ( $_SESSION ['UserID'] ))
+		if (isset ( $_SESSION ['user'] ))
 		{
-			$this->arr_values["UPDATE_USER"] = $_SESSION ['UserID'];
+			$this->arr_values["UPDATE_USER"] = $_SESSION ['user'];
 		}
 		else
 		{
