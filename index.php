@@ -2074,6 +2074,7 @@
     <script src="static/js/vendor/underscore.min.js@12-06-2016"></script>
     <script src="static/js/vendor/moment.min.js@12-06-2016"></script>
     <script src="static/js/vendor/bootstrap.min.js@12-06-2016"></script>
+    <script src="static/js/vendor/bootstrap-dialog.min.js"></script>
     <script src="static/js/vendor/sticky.min.js@12-06-2016"></script>
     <script src="static/js/vendor/sammy.min.js@12-06-2016"></script>
     <script src="static/js/vendor/jquery.maskedinput.min.js@12-06-2016"></script>

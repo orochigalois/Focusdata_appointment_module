@@ -599,15 +599,22 @@ User.prototype.register = function () {
     var extraData = {'new_patient': this.isNewPatient };
 
     $.ajax({
-        url: 'accounts/register/',
+        url: 'classes/class.register.php',
         type: 'POST',
-        data: $('#registerForm').serialize() +'&'+ $.param(extraData),
-        success: function () {
-            GlobalMessages.success('You have successfully registered.');
-            this.isAuthenticated(true);
-            $('#loginregister').modal('hide');
-            this.fetchDetails();
-            this.fetchPatients();
+        data: {form: $('#registerForm').serializeObject(), extra : $.param(extraData)},
+        success: function (response) {
+        	
+        	if(response.success){
+        		GlobalMessages.success('You have successfully registered.');
+                this.isAuthenticated(true);
+                $('#loginregister').modal('hide');
+                this.fetchDetails();
+                this.fetchPatients();
+        	}
+        	else{
+        		alert('This mail has been used');
+        	}
+            
         }.bind(this),
         error: function (xhr) {
             this.forms.register.set_errors(xhr.responseJSON);

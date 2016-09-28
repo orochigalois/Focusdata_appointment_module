@@ -20,7 +20,7 @@ class patient_create
 		if (isset ( $_SESSION ['id'] ))
 		{
 			$this->arr_values["CUSTOMER_USER_ID"]=$_SESSION ['id'];
-			$this->arr_values["CREATE_USER"] = $_SESSION ['id'];
+			$this->arr_values["CREATE_USER"] = $_SESSION ['user'];
 		}
 		else
 		{

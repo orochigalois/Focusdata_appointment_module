@@ -53,11 +53,17 @@ class Sign_in
 			$response['success'] =false;
 			unset($_SESSION ['id']);
 			unset($_SESSION ['user']);
+			unset($_SESSION ['phone']);
+			unset($_SESSION ['name']);
+			unset($_SESSION ['email']);
 
 		}else{
 			$response['success'] =false;
 			unset($_SESSION ['id']);
 			unset($_SESSION ['user']);
+			unset($_SESSION ['phone']);
+			unset($_SESSION ['name']);
+			unset($_SESSION ['email']);
 
 		}
 
