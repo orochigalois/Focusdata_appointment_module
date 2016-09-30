@@ -142,7 +142,7 @@ var ViewModel = function () {
 
     this.fetchDoctorData = function () {
         $.ajax({
-            url: 'api/v1/doctor/',
+            url: 'classes/class.doctor_read.php',
             type: 'GET',
             data: {'clinic': self.selectedClinic()}
         })
@@ -174,7 +174,7 @@ var ViewModel = function () {
 
     this.fetchClinicData = function () {
         return $.ajax({
-            url: 'api/v1/clinic/',
+            url: 'classes/class.clinic_read.php',
             type: 'GET'
         })
         .then(function(response) {

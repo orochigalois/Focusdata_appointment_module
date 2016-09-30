@@ -617,7 +617,7 @@ Calendar.prototype.fetchData = function()
 {
 	$.ajax(
 	{
-		url : 'api/v1/appointment/',
+		url : 'classes/class.appointment_read.php',
 		type : 'GET',
 		cache : false,
 		success : $.proxy(function(response)
@@ -686,10 +686,9 @@ Calendar.prototype.makeBooking = function()
 	$
 			.ajax(
 					{
-						url : 'api/v2/timeslot/'
-								+ appt.id + '/',
+						url : 'classes/class.appointment_create.php',
 						type : 'POST',
-						data : data
+						data : {DATA:data,appointmentID:appt.id}
 					})
 			.done(function()
 			{

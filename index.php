@@ -94,8 +94,8 @@
 
     <footer id="footer">
         <div class="container">
-            <a href="http://www.healthsite.com.au/" class="powered-by" target="_blank">
-                <span class="tagline">Powered by <span class="healthsite-logo">Health Site</span></span>
+            <a href="#" class="powered-by" target="_blank">
+                <span class="tagline"><span class="healthsite-logo">Health Site</span></span>
             </a>
         </div>
     </footer>
@@ -226,7 +226,7 @@
                             <label for="patient" class="control-label">
                                 Booking for:
                             </label>
-                            <select class="form-control" name="patient" id="patient" data-bind="foreach: $root.user.patients">
+                            <select disabled class="form-control" name="patient" id="patient" data-bind="foreach:$root.user.patients">
                                 <option data-bind="value: id, text: first_name + ' ' + last_name"></option>
                             </select>
                             <span class="help-block">Select the patient who will attend this appointment</span>
@@ -378,7 +378,7 @@
 </div>
 
 
-    <script id="calendarTmpl" type="text/html">
+   <script id="calendarTmpl" type="text/html">
         
 
 <main role="main" class="row" id="main_content">
@@ -493,7 +493,7 @@
             <div class="panel-body">
                 <div class="booking-calendar"><table>
     <caption>
-         <span class="month-1">June</span> 
+         <span class="month-1">September</span> / <span class="month-2">October</span> 
     </caption>
 
     <thead>
@@ -521,221 +521,223 @@
             
             <tr>
             
-                <td class="padday month-1" data-date="13-06-2016" data-bind="
+                <td class="padday month-1" data-date="26-09-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '13-06-2016'),
-                        selected: selectedDate() == '13-06-2016'
-                    }
-                ">13</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="14-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '14-06-2016'),
-                        selected: selectedDate() == '14-06-2016'
-                    }
-                ">14</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="15-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '15-06-2016'),
-                        selected: selectedDate() == '15-06-2016'
-                    }
-                ">15</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="16-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '16-06-2016'),
-                        selected: selectedDate() == '16-06-2016'
-                    }
-                ">16</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="17-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '17-06-2016'),
-                        selected: selectedDate() == '17-06-2016'
-                    }
-                ">17</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="18-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '18-06-2016'),
-                        selected: selectedDate() == '18-06-2016'
-                    }
-                ">18</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="19-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '19-06-2016'),
-                        selected: selectedDate() == '19-06-2016'
-                    }
-                ">19</td>
-            
-            </tr>
-            
-        
-            
-            <tr>
-            
-                <td class="bookday month-1" data-date="20-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '20-06-2016'),
-                        selected: selectedDate() == '20-06-2016'
-                    }
-                ">20</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="21-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '21-06-2016'),
-                        selected: selectedDate() == '21-06-2016'
-                    }
-                ">21</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="22-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '22-06-2016'),
-                        selected: selectedDate() == '22-06-2016'
-                    }
-                ">22</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="23-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '23-06-2016'),
-                        selected: selectedDate() == '23-06-2016'
-                    }
-                ">23</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="24-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '24-06-2016'),
-                        selected: selectedDate() == '24-06-2016'
-                    }
-                ">24</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="25-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '25-06-2016'),
-                        selected: selectedDate() == '25-06-2016'
-                    }
-                ">25</td>
-            
-        
-            
-                <td class="bookday month-1" data-date="26-06-2016" data-bind="
-                    click: setSelectedDate,
-                    css: {
-                        available: _.contains(filteredDates(), '26-06-2016'),
-                        selected: selectedDate() == '26-06-2016'
+                        available: _.contains(filteredDates(), '26-09-2016'),
+                        selected: selectedDate() == '26-09-2016'
                     }
                 ">26</td>
             
-            </tr>
-            
         
             
-            <tr>
-            
-                <td class="bookday month-1" data-date="27-06-2016" data-bind="
+                <td class="padday month-1" data-date="27-09-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '27-06-2016'),
-                        selected: selectedDate() == '27-06-2016'
+                        available: _.contains(filteredDates(), '27-09-2016'),
+                        selected: selectedDate() == '27-09-2016'
                     }
                 ">27</td>
             
         
             
-                <td class="bookday month-1" data-date="28-06-2016" data-bind="
+                <td class="padday month-1" data-date="28-09-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '28-06-2016'),
-                        selected: selectedDate() == '28-06-2016'
+                        available: _.contains(filteredDates(), '28-09-2016'),
+                        selected: selectedDate() == '28-09-2016'
                     }
                 ">28</td>
             
         
             
-                <td class="bookday month-1" data-date="29-06-2016" data-bind="
+                <td class="bookday month-1" data-date="29-09-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '29-06-2016'),
-                        selected: selectedDate() == '29-06-2016'
+                        available: _.contains(filteredDates(), '29-09-2016'),
+                        selected: selectedDate() == '29-09-2016'
                     }
                 ">29</td>
             
         
             
-                <td class="bookday month-1" data-date="30-06-2016" data-bind="
+                <td class="bookday month-1" data-date="30-09-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '30-06-2016'),
-                        selected: selectedDate() == '30-06-2016'
+                        available: _.contains(filteredDates(), '30-09-2016'),
+                        selected: selectedDate() == '30-09-2016'
                     }
                 ">30</td>
             
         
+    
+        
             
-                <td class="bookday month-1" data-date="01-07-2016" data-bind="
+                <td class="bookday month-2" data-date="01-10-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '01-07-2016'),
-                        selected: selectedDate() == '01-07-2016'
+                        available: _.contains(filteredDates(), '01-10-2016'),
+                        selected: selectedDate() == '01-10-2016'
                     }
                 ">1</td>
             
         
             
-                <td class="bookday month-1" data-date="02-07-2016" data-bind="
+                <td class="bookday month-2" data-date="02-10-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '02-07-2016'),
-                        selected: selectedDate() == '02-07-2016'
+                        available: _.contains(filteredDates(), '02-10-2016'),
+                        selected: selectedDate() == '02-10-2016'
                     }
                 ">2</td>
             
+            </tr>
+            
         
             
-                <td class="bookday month-1" data-date="03-07-2016" data-bind="
+            <tr>
+            
+                <td class="bookday month-2" data-date="03-10-2016" data-bind="
                     click: setSelectedDate,
                     css: {
-                        available: _.contains(filteredDates(), '03-07-2016'),
-                        selected: selectedDate() == '03-07-2016'
+                        available: _.contains(filteredDates(), '03-10-2016'),
+                        selected: selectedDate() == '03-10-2016'
                     }
                 ">3</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="04-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '04-10-2016'),
+                        selected: selectedDate() == '04-10-2016'
+                    }
+                ">4</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="05-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '05-10-2016'),
+                        selected: selectedDate() == '05-10-2016'
+                    }
+                ">5</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="06-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '06-10-2016'),
+                        selected: selectedDate() == '06-10-2016'
+                    }
+                ">6</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="07-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '07-10-2016'),
+                        selected: selectedDate() == '07-10-2016'
+                    }
+                ">7</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="08-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '08-10-2016'),
+                        selected: selectedDate() == '08-10-2016'
+                    }
+                ">8</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="09-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '09-10-2016'),
+                        selected: selectedDate() == '09-10-2016'
+                    }
+                ">9</td>
+            
+            </tr>
+            
+        
+            
+            <tr>
+            
+                <td class="bookday month-2" data-date="10-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '10-10-2016'),
+                        selected: selectedDate() == '10-10-2016'
+                    }
+                ">10</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="11-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '11-10-2016'),
+                        selected: selectedDate() == '11-10-2016'
+                    }
+                ">11</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="12-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '12-10-2016'),
+                        selected: selectedDate() == '12-10-2016'
+                    }
+                ">12</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="13-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '13-10-2016'),
+                        selected: selectedDate() == '13-10-2016'
+                    }
+                ">13</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="14-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '14-10-2016'),
+                        selected: selectedDate() == '14-10-2016'
+                    }
+                ">14</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="15-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '15-10-2016'),
+                        selected: selectedDate() == '15-10-2016'
+                    }
+                ">15</td>
+            
+        
+            
+                <td class="bookday month-2" data-date="16-10-2016" data-bind="
+                    click: setSelectedDate,
+                    css: {
+                        available: _.contains(filteredDates(), '16-10-2016'),
+                        selected: selectedDate() == '16-10-2016'
+                    }
+                ">16</td>
             
             </tr>
             
@@ -784,7 +786,6 @@
 </main>
 
     </script>
-
     <script id="accountTmpl" type="text/html">
         <div class="row account-view" data-bind="with: $root.user">
     <div class="col-sm-16">

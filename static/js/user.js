@@ -361,8 +361,9 @@ var User = function () {
 
     this.cancelBooking = function () {
         $.ajax({
-            url: 'api/v1/booking/object/' + this.id + '/cancel/',
+            url: 'classes/class.booking_cancel.php',
             type: 'POST',
+            data: {ID:this.id},
             success: self.fetchBookings.bind(self),
             error: self.fetchBookings.bind(self)
         });
@@ -750,7 +751,7 @@ User.prototype.savePatient = function () {
 
 User.prototype.fetchBookings = function ( callback ) {
     $.ajax({
-        url: 'api/v1/booking/',
+        url: 'classes/class.booking_read.php',
         type: 'GET',
         success: function (response) {
             var bookings = _(response.objects).map(function (b) {

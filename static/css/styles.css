@@ -6776,9 +6776,9 @@ form .placeholder__text.input-lg,form .placeholder__text.input-sm {
 	border:0;
 	display:inline-block;
 	vertical-align:middle;
-	width:72px;
-	height:52px;
-	background:url(../images/healthsite-logo.png) no-repeat left top;
+	width:160px;
+	height:55px;
+	background:url(../images/logo.png) no-repeat left top;
 	-webkit-background-size:cover;
 	background-size:cover
 }
