@@ -11,8 +11,11 @@ class appointment_read_db{
 
     public function viewAll(){
 
-        $sql = "SELECT * FROM fd_rel_doctor_appointment_time WHERE ACTIVE_STATUS=1";
+        $sql = "SELECT * FROM fd_rel_doctor_appointment_time WHERE ACTIVE_STATUS=1 and
+        		CONCAT(`APPOINTMENT_DATE`,' ',`APPOINTMENT_TIME`) > NOW()";
 
+        
+        
         $ret = $this->db->fetchAll_sql($sql,null);
         
         return $ret;
