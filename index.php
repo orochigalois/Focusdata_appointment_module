@@ -1012,7 +1012,7 @@
                 <div class="row">
                     <div class="col-xs-16">
                         <hr>
-                        <button type="button" class="btn btn-add" data-bind="click: addPatient">Add family member</button>
+                        <button style="display: none;" type="button" class="btn btn-add" data-bind="click: addPatient">Add family member</button>
                     </div>
                 </div>
             </div>
