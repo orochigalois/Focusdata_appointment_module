@@ -22,18 +22,38 @@ class register
 		}
 		
 		//prepare for fd_customer_user
-		$this->arr_values['CUSTOMER_USER_NAME']=$this->arr_values['email'];
+		
 		$this->arr_values['CUSTOMER_USER_PWD']=md5($this->arr_values['password']);
 		
 		$this->arr_values['CUSTOMER_USER_MAIL']=$this->arr_values['email'];
-		$this->arr_values['CUSTOMER_NAME']=$this->arr_values['first_name'].' '.$this->arr_values['last_name'];
-		$this->arr_values['CUSTOMER_GENDER']=$this->arr_values['gender'];
+		$this->arr_values['CUSTOMER_FIRSTNAME']=$this->arr_values['first_name'];
+		$this->arr_values['CUSTOMER_LASTNAME']=$this->arr_values['last_name'];
+		if($this->arr_values['gender']=="M")
+			$this->arr_values['GENDER_ID']="0";
+		else
+			$this->arr_values['GENDER_ID']="1";
 		
 		$date = str_replace('/', '-', $this->arr_values['dob']);
 		$this->arr_values['CUSTOMER_BIRTHDAY'] =date('Y-m-d', strtotime($date));
 
 		$this->arr_values['CUSTOMER_PHONE_NO']=$this->arr_values['phone_mobile'];
 		$this->arr_values['MEDICAL_CARD_NO']=$this->arr_values['medicare_no'];
+		
+		
+		if($this->arr_values['title']=="Mr")
+			$this->arr_values['TITLE_ID']="0";
+		else if($this->arr_values['title']=="Mrs")
+			$this->arr_values['TITLE_ID']="1";
+		else if($this->arr_values['title']=="Ms")
+			$this->arr_values['TITLE_ID']="2";
+		else if($this->arr_values['title']=="Miss")
+			$this->arr_values['TITLE_ID']="3";
+		else if($this->arr_values['title']=="Master")
+			$this->arr_values['TITLE_ID']="4";
+		else if($this->arr_values['title']=="Dr")
+			$this->arr_values['TITLE_ID']="5";
+		else{}
+			
 		
 		unset($this->arr_values['title']);
 		unset($this->arr_values['first_name']);
@@ -48,7 +68,7 @@ class register
 		unset($this->arr_values['password']);
 		
 		$this->arr_values["STATE_ID"]=1;
-		$this->arr_values["CREATE_USER"] = $this->arr_values['CUSTOMER_NAME'];
+		$this->arr_values["CREATE_USER"] = $this->arr_values['CUSTOMER_USER_MAIL'];
 		$this->arr_values["CREATE_DATE"] = date("Y-m-d H:i:s",time());
 
 
@@ -75,9 +95,9 @@ class register
 			
 			//auto login
 			$_SESSION ['id'] = $lastID;
-			$_SESSION ['user'] = $this->arr_values['CUSTOMER_USER_NAME'];
+			$_SESSION ['user'] = $this->arr_values['CUSTOMER_USER_MAIL'];
 			$_SESSION['phone'] = $this->arr_values["CUSTOMER_PHONE_NO"];
-			$_SESSION['name'] = $this->arr_values["CUSTOMER_NAME"];
+			$_SESSION['name'] = $this->arr_values["CUSTOMER_FIRSTNAME"];
 			$_SESSION['email'] = $this->arr_values["CUSTOMER_USER_MAIL"];
 			
 			//auto add myself to ap_patient

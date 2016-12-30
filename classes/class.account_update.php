@@ -13,7 +13,7 @@ class account_update
 
 		
 		if (isset ( $_POST)){
-			$_POST['CUSTOMER_NAME'] = $_POST['name'];
+			$_POST['CUSTOMER_FIRSTNAME'] = $_POST['name'];
 			unset($_POST['name']);
 			
 			$_POST['CUSTOMER_PHONE_NO'] = $_POST['phone'];
@@ -46,7 +46,7 @@ class account_update
 	
 		if($ret>0){
 			$response['phone'] = $this->arr_values["CUSTOMER_PHONE_NO"];
-			$response['name'] = $this->arr_values["CUSTOMER_NAME"];
+			$response['name'] = $this->arr_values["CUSTOMER_FIRSTNAME"];
 			$response['email'] = $this->arr_values["CUSTOMER_USER_MAIL"];
 
 		}

@@ -39,13 +39,13 @@ class Sign_in
 			$ID= $this->sign_in->getUserID ($this->email,$this->password);
 			
 			$_SESSION ['id'] = $ID[0]["CUSTOMER_USER_ID"];
-			$_SESSION ['user'] = $ID[0]["CUSTOMER_USER_NAME"];
+			$_SESSION ['user'] = $ID[0]["CUSTOMER_USER_MAIL"];
 			$_SESSION['phone'] = $ID[0]["CUSTOMER_PHONE_NO"];
-			$_SESSION['name'] = $ID[0]["CUSTOMER_NAME"];
+			$_SESSION['name'] = $ID[0]["CUSTOMER_FIRSTNAME"];
 			$_SESSION['email'] = $ID[0]["CUSTOMER_USER_MAIL"];
 			
 			$response['phone'] = $ID[0]["CUSTOMER_PHONE_NO"];
-			$response['name'] = $ID[0]["CUSTOMER_NAME"];
+			$response['name'] = $ID[0]["CUSTOMER_FIRSTNAME"];
 			$response['success'] =true;
 
 
