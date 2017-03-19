@@ -28,10 +28,10 @@ class doctor_read
 		for($x = 0; $x < $arrlength; $x++) {
 
 			$ret[$x]['doctor_code']=$ret[$x]['DOCTOR_ID'];
-			$ret[$x]['picture']="/focusdata_code/img/doctors/".$ret[$x]['DOCTOR_PHOTO'];
+			$ret[$x]['picture']="/focusdata_code/".$ret[$x]['DOCTOR_PHOTO'];
 			$ret[$x]['notice']="";
 			$ret[$x]['name']=$ret[$x]['DOCTOR_NAME'];
-			$ret[$x]['thumbnail']="/focusdata_code/img/doctors/".$ret[$x]['DOCTOR_PHOTO'];
+			$ret[$x]['thumbnail']="/focusdata_code/".$ret[$x]['DOCTOR_PHOTO'];
 			$ret[$x]['id']=$ret[$x]['DOCTOR_ID'];
 			
 			unset($ret[$x]['DOCTOR_ID']);
