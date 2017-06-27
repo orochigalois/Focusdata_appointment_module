@@ -28,10 +28,10 @@ class booking_read
 		for($x = 0; $x < $arrlength; $x++) {
 
 			$ret[$x]['doctor_code']=$ret[$x]['DOCTOR_ID'];
-			$ret[$x]['first_name']=$ret[$x]['CUSTOMER_NAME'];
-			$ret[$x]['last_name']=$ret[$x]['CUSTOMER_NAME'];
-			$ret[$x]['full_name']=$ret[$x]['CUSTOMER_NAME'];
-			$ret[$x]['title']=$ret[$x]['CUSTOMER_NAME'];
+			$ret[$x]['first_name']=$ret[$x]['CUSTOMER_FIRSTNAME'];
+			$ret[$x]['last_name']=$ret[$x]['CUSTOMER_LASTNAME'];
+			$ret[$x]['full_name']=$ret[$x]['CUSTOMER_FIRSTNAME'];
+			$ret[$x]['title']=$ret[$x]['CUSTOMER_LASTNAME'];
 			$ret[$x]['date']=$ret[$x]['APPOINTMENT_DATE'].' '.$ret[$x]['APPOINTMENT_TIME'];
 			$ret[$x]['clinic']=1;
 			$ret[$x]['arrived']=false;

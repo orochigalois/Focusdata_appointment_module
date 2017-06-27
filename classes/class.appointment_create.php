@@ -17,7 +17,16 @@ class appointment_create
 		//Step1. add a record to fd_rel_customer_appointment
 		
 		//1.1 get CUSTOMER_USER_ID from patient_id
-		$CUSTOMER_USER_ID = $this->appointment_create_db->get_CUSTOMER_USER_ID($_POST ['DATA']['patient_id']);
+		if (isset ( $_SESSION ['id'] ))
+		{
+			$CUSTOMER_USER_ID = $_SESSION ['id'];
+		}
+		else
+		{
+			$CUSTOMER_USER_ID = "";
+		}
+
+		//$CUSTOMER_USER_ID = $this->appointment_create_db->get_CUSTOMER_USER_ID($_POST ['DATA']['patient_id']);
 		
 		//1.2 get DOCTOR_ID from fd_rel_doctor_appointment_time
 		$DOCTOR_ID = $this->appointment_create_db->get_DOCTOR_ID($_POST ['appointmentID']);
